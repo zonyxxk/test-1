@@ -85,7 +85,7 @@ read -p "Minimum home runs: " hr
 read -p "Minimum batting average (e.g., 0.280): " ba
 echo""
 echo "Players with HR >= "$hr" and BA >= "$ba":" 
-awk -F',' -v hr="$hr" -v ba="$ba" 'NR>1 && $14>=hr && $20>=ba' "$file" | sort -t, -k14,14nr | awk -F',' '{print $2"(Team: "$4") - HR: "$14", BA: "$20", RBI: "$15", SLG: "$22}'
+awk -F',' -v hr="$hr" -v ba="$ba" 'NR>1 && $8>=502 && $14>=hr && $20>=ba' "$file" | sort -t, -k14,14nr | awk -F',' '{print $2"(Team: "$4") - HR: "$14", BA: "$20", RBI: "$15", SLG: "$22}'
 ;;
 6)
 echo ""
