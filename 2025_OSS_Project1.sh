@@ -29,7 +29,7 @@ case $cmd in
 echo ""
 read -p "Enter a player name to search: " player
 echo "Player stats for \"$player\":"
-awk -F',' -v player="$player" '$2==player {printf "Player: %s, Team: %s, Age: %d, WAR: %.1f, HR: %d, BA: %.3f\n", $2, $4, $3, $6, $14, $20}' "$file"
+awk -F',' -v player="$player" '$2==player {print "Player: "$2", Team: "$4", Age: "$3", WAR: "$6", HR: "$14", BA: " $20}' "$file"
 ;;
 
 2)
