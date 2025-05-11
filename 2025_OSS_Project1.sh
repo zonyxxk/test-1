@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $# -ne 1 ]
+if [ $# -ne 1 ] || [ ! -f "$1" ]
 then
 echo "usage: $0 file"
 exit 1
@@ -44,6 +44,11 @@ fi
 
 3)
 read -p "Enter team abbreviation (e.g., NYY,LAD,BOS):" team
+if ! awk -F',' -v team="$team" '$4 == team {found=1} END {exit !found}' "$file"; then
+    echo "Team not found"
+    continue
+fi
+
 echo ""
 echo "Team stats for "$team":"
 awk -F',' -v team="$team" '$4==team {sum += $3; count++} END {print "Average age: ",sum/count}' "$file"
