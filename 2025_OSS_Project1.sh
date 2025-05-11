@@ -38,7 +38,7 @@ read -p "Do you want to see the top 5 players by SLG? (y/n): " yn
 if [ $yn = "y" ]; then
 echo ""
 echo "***Top 5 Players by SLG***"
-awk -F',' -v player="$player" '$2==player {print "Player: "$2", Team: "$4", Age: "$3", WAR: "$6", HR: "$14", BA: " $20}' "$file"
+awk -F',' 'NR>1 && $8>=502' "$file" | sort -t, -k22,22nr | awk -F',' '{print NR". "$2"(Team: "$4") - SLG: "$22", HR: "$14", RBI: "$15}' | head -n 5
 fi
 ;;
 
